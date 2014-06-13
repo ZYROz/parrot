@@ -544,7 +544,6 @@ really a public API.
 
         Parrot_ex_throw_from_c_args(INTERP, NULL, EXCEPTION_GLOBAL_NOT_FOUND,
             "Invalid namespace key in set_pmc_keyed");
-        PARROT_GC_WRITE_BARRIER(INTERP, SELF);
     }
 
     VTABLE PMC *get_pmc_keyed_str(STRING *key) :no_wb {

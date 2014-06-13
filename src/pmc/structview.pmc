@@ -797,7 +797,7 @@ any other type of element.
         }
     }
 
-    VTABLE void set_pmc_keyed(PMC *k, PMC *p) :manual_wb {
+    VTABLE void set_pmc_keyed(PMC *k, PMC *p) {
         BEGIN_KEYED(INTERP, SELF, k)
         switch (elts[i].access) {
           case int_access:
@@ -837,10 +837,8 @@ any other type of element.
                   default:
                       break;
                 }
-                PARROT_GC_WRITE_BARRIER(INTERP, SELF);
             }
           default:
-              PARROT_GC_WRITE_BARRIER(INTERP, SELF);
               break;
         }
     }
