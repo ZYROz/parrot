@@ -212,8 +212,38 @@ END
         if ($returns_signature and !$method->is_vtable) {
             $e->emit( <<"END" );
     {  /*BEGIN RETURN $returns */
-        Parrot_pcc_set_call_from_c_args(interp, _call_object,
-            "$returns_signature", $returns_varargs);
+END
+        my $arg_index = 0;
+        my @sig_vals = split(//,$returns_signature);
+        my @returns_vararg_list = split(/, /,$returns_varargs);
+        my $temp_val;
+
+        foreach $temp_val (@sig_vals) {
+	        if ($temp_val eq uc($temp_val)) {
+	            if($temp_val eq 'P') {
+                    $e->emit( <<"END");
+VTABLE_set_pmc_keyed_int(interp, _call_object, 0, $returns_vararg_list[$arg_index]);
+END
+        		}
+	            elsif($temp_val eq 'S') {
+                    $e->emit( <<"END");
+VTABLE_set_pmc_keyed_int(interp, _call_object, 3, $returns_vararg_list[$arg_index]);
+END
+        		}
+	            elsif($temp_val eq 'I') {
+                    $e->emit( <<"END");
+VTABLE_set_pmc_keyed_int(interp, _call_object, 1, $returns_vararg_list[$arg_index]);
+END
+        		}
+	            elsif($temp_val eq 'N') {
+                    $e->emit( <<"END");
+VTABLE_set_pmc_keyed_int(interp, _call_object, 2, $returns_vararg_list[$arg_index]);
+END
+        		}
+        		$arg_index += 1;
+            }
+        }
+        $e->emit( <<"END" );
         $wb
         return;
     }   /*END RETURN $returns */
@@ -377,10 +407,37 @@ END
 $params_declarations
 END
     if ($params_signature) {
-        $e->emit( <<"END");
-        Parrot_pcc_fill_params_from_c_args(interp, _call_object, "$params_signature",
-            $params_varargs);
+        my $arg_index = 0;
+        my @sig_vals = split(//,$params_signature);
+        my @params_vararg_list = split(/, &/,(substr $params_varargs, 1));
+        my $temp_val;
+
+        foreach $temp_val (@sig_vals) {
+	        if ($temp_val eq uc($temp_val)) {
+	            if($temp_val eq 'P') {
+                    $e->emit( <<"END");
+$params_vararg_list[$arg_index] = VTABLE_get_pmc_keyed_int(interp, _call_object, 0);
 END
+        		}
+	            elsif($temp_val eq 'S') {
+                    $e->emit( <<"END");
+$params_vararg_list[$arg_index] = VTABLE_get_string_keyed_int(interp, _call_object, 3);
+END
+        		}
+	            elsif($temp_val eq 'I') {
+                    $e->emit( <<"END");
+$params_vararg_list[$arg_index] = VTABLE_get_integer_keyed_int(interp, _call_object, 1);
+END
+        		}
+	            elsif($temp_val eq 'N') {
+                    $e->emit( <<"END");
+$params_vararg_list[$arg_index] = VTABLE_get_number_keyed_int(interp, _call_object, 2);
+END
+        		}
+        		$arg_index += 1;
+            }
+        }
+
     }
     $e->emit( <<'END' );
     { /* BEGIN PMETHOD BODY */
