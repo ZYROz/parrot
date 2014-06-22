@@ -222,22 +222,22 @@ END
 	        if ($temp_val eq uc($temp_val)) {
 	            if($temp_val eq 'P') {
                     $e->emit( <<"END");
-VTABLE_set_pmc_keyed_int(interp, _call_object, 0, $returns_vararg_list[$arg_index]);
+VTABLE_set_pmc_keyed_int(interp, _call_object, "P", $returns_vararg_list[$arg_index]);
 END
         		}
 	            elsif($temp_val eq 'S') {
                     $e->emit( <<"END");
-VTABLE_set_pmc_keyed_int(interp, _call_object, 3, $returns_vararg_list[$arg_index]);
+VTABLE_set_string_keyed_int(interp, _call_object, "S", $returns_vararg_list[$arg_index]);
 END
         		}
 	            elsif($temp_val eq 'I') {
                     $e->emit( <<"END");
-VTABLE_set_pmc_keyed_int(interp, _call_object, 1, $returns_vararg_list[$arg_index]);
+VTABLE_set_integer_keyed_int(interp, _call_object, "I", $returns_vararg_list[$arg_index]);
 END
         		}
 	            elsif($temp_val eq 'N') {
                     $e->emit( <<"END");
-VTABLE_set_pmc_keyed_int(interp, _call_object, 2, $returns_vararg_list[$arg_index]);
+VTABLE_set_number_keyed_int(interp, _call_object, "N", $returns_vararg_list[$arg_index]);
 END
         		}
         		$arg_index += 1;
