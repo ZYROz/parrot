@@ -217,7 +217,7 @@ END
                        'S' => 'string',
                        'I' => 'integer',
                        'N' => 'number'};
-        my $type = $$sigtype{$returns_signature};
+        my $type = $sigtype->{$returns_signature};
         if ($type) {
             $e->emit( <<"END");
         VTABLE_set_${type}_keyed_int(interp, _call_object, 0, $returns_varargs);
@@ -402,8 +402,8 @@ END
         my @params_vararg_list = split(/, &/,(substr $params_varargs, 1));
 
         foreach my $sig (@sig_vals) {
-            if ($$sigtype{$sig}) {
-                    my $type = $$sigtype{$sig};
+            if ($sigtype->{$sig}) {
+                    my $type = $sigtype->{$sig};
                     $e->emit( <<"END");
         $params_vararg_list[$arg_index] = VTABLE_get_${type}_keyed_int(interp, _call_object, $arg_index);
 END
