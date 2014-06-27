@@ -213,34 +213,21 @@ END
             $e->emit( <<"END" );
     {  /*BEGIN RETURN $returns */
 END
+        my $sigtype = {'P' => 'pmc',
+                       'S' => 'string',
+                       'I' => 'integer',
+                       'N' => 'number'};
         my $arg_index = 0;
         my @sig_vals = split(//,$returns_signature);
         my @returns_vararg_list = split(/, /,$returns_varargs);
-        my $temp_val;
 
-        foreach $temp_val (@sig_vals) {
-	        if ($temp_val eq uc($temp_val)) {
-	            if($temp_val eq 'P') {
-                    $e->emit( <<"END");
-        VTABLE_set_pmc_keyed_int(interp, _call_object, 0, $returns_vararg_list[$arg_index]);
+        foreach my $sig (@sig_vals) {
+            if ($$sigtype{$sig}) {
+                my $type = $$sigtype{$sig};
+                $e->emit( <<"END");
+        VTABLE_set_${type}_keyed_int(interp, _call_object, $arg_index, $returns_vararg_list[$arg_index]);
 END
-        		}
-	            elsif($temp_val eq 'S') {
-                    $e->emit( <<"END");
-        VTABLE_set_string_keyed_int(interp, _call_object, 3, $returns_vararg_list[$arg_index]);
-END
-        		}
-	            elsif($temp_val eq 'I') {
-                    $e->emit( <<"END");
-        VTABLE_set_integer_keyed_int(interp, _call_object, 1, $returns_vararg_list[$arg_index]);
-END
-        		}
-	            elsif($temp_val eq 'N') {
-                    $e->emit( <<"END");
-        VTABLE_set_number_keyed_int(interp, _call_object, 2, $returns_vararg_list[$arg_index]);
-END
-        		}
-        		$arg_index += 1;
+                $arg_index++;
             }
         }
         $e->emit( <<"END" );
@@ -407,37 +394,23 @@ END
 $params_declarations
 END
     if ($params_signature) {
+        my $sigtype = {'P' => 'pmc',
+                       'S' => 'string',
+                       'I' => 'integer',
+                       'N' => 'number'};
         my $arg_index = 0;
         my @sig_vals = split(//,$params_signature);
         my @params_vararg_list = split(/, &/,(substr $params_varargs, 1));
-        my $temp_val;
 
-        foreach $temp_val (@sig_vals) {
-	        if ($temp_val eq uc($temp_val)) {
-	            if($temp_val eq 'P') {
+        foreach my $sig (@sig_vals) {
+            if ($$sigtype{$sig}) {
+                    my $type = $$sigtype{$sig};
                     $e->emit( <<"END");
-        $params_vararg_list[$arg_index] = VTABLE_get_pmc_keyed_int(interp, _call_object, 0);
+        $params_vararg_list[$arg_index] = VTABLE_get_${type}_keyed_int(interp, _call_object, $arg_index);
 END
-        		}
-	            elsif($temp_val eq 'S') {
-                    $e->emit( <<"END");
-        $params_vararg_list[$arg_index] = VTABLE_get_string_keyed_int(interp, _call_object, 3);
-END
-        		}
-	            elsif($temp_val eq 'I') {
-                    $e->emit( <<"END");
-        $params_vararg_list[$arg_index] = VTABLE_get_integer_keyed_int(interp, _call_object, 1);
-END
-        		}
-	            elsif($temp_val eq 'N') {
-                    $e->emit( <<"END");
-        $params_vararg_list[$arg_index] = VTABLE_get_number_keyed_int(interp, _call_object, 2);
-END
-        		}          
-        		$arg_index += 1;
+                $arg_index++;
             }
         }
-
     }
     $e->emit( <<'END' );
     { /* BEGIN PMETHOD BODY */
