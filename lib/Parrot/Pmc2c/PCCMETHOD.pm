@@ -405,7 +405,7 @@ END
         my $arg_index = 0;
         my $pos = 0;
 
-        while ($pos lt $sig_len) {
+        while ($pos le $sig_len) {
             my $type = $sigtype->{$sig_vals[$pos]};
 
             if ($sig_vals[$pos+1] eq 'o' and (not exists $sig_vals[$pos+2])) {
@@ -413,7 +413,7 @@ END
         $params_vararg_list[$arg_name] = VTABLE_get_${type}_keyed_int(interp, _call_object, $arg_index);
 END
                 $pos += 2;
-                $arg_name ++;
+                $arg_name++;
                 $arg_index++;
             }
 
