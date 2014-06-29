@@ -397,17 +397,52 @@ END
                        'S' => 'string',
                        'I' => 'integer',
                        'N' => 'number'};
-        my $arg_index = 0;
+
         my @sig_vals = split(//,$params_signature);
         my @params_vararg_list = split(/, &/,(substr $params_varargs, 1));
+        my $sig_len = $#sig_vals;
+        my $arg_name = 0;
+        my $arg_index = 0;
+        my $pos = 0;
 
-        foreach my $sig (@sig_vals) {
-            if ($sigtype->{$sig}) {
-                    my $type = $sigtype->{$sig};
-                    $e->emit( <<"END");
-        $params_vararg_list[$arg_index] = VTABLE_get_${type}_keyed_int(interp, _call_object, $arg_index);
+        while ($pos lt $sig_len) {
+            my $type = $sigtype->{$sig_vals[$pos]};
+
+            if ($sig_vals[$pos+1] eq 'o' and (not exists $sig_vals[$pos+2])) {
+                $e->emit( <<"END");
+        $params_vararg_list[$arg_name] = VTABLE_get_${type}_keyed_int(interp, _call_object, $arg_index);
 END
+                $pos += 2;
+                $arg_name ++;
                 $arg_index++;
+            }
+
+           elsif ($sig_vals[$pos+1] eq 'o') {
+                $e->emit( <<"END");
+        if (($params_vararg_list[$arg_name] = VTABLE_get_${type}_keyed_int(interp, _call_object, $arg_index)))
+            $params_vararg_list[$arg_name+1] = 1;
+END
+                $pos += 4;
+                $arg_name += 2;
+                $arg_index++;
+            }
+
+            elsif ($type) {
+                    $e->emit( <<"END");
+        $params_vararg_list[$arg_name] = VTABLE_get_${type}_keyed_int(interp, _call_object, $arg_index);
+END
+                    $arg_name++;
+                    $arg_index++;
+                    if ($sig_vals[$pos+1] eq lc($sig_vals[$pos+1])) {
+                        $pos += 2;
+                    }
+                    else {
+                        $pos++;
+                    }
+            }
+
+            else {
+                $pos++;
             }
         }
     }
