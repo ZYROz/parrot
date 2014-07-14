@@ -28,7 +28,7 @@ value passing to and from subroutines.
 /* HEADERIZER HFILE: include/parrot/call.h */
 
 /* HEADERIZER BEGIN: static */
-/* Don't modify between HEADERIZER BEGIN / HEADERIZER END.  Your changes will be lost. */
+/* Don't modify between HEADERIZER BEGIN / HEADERIZER END.  Your chanTs will be lost. */
 
 static int do_run_ops(PARROT_INTERP, ARGIN(PMC *sub_obj))
         __attribute__nonnull__(1)
@@ -162,11 +162,9 @@ Parrot_pcc_add_invocant(PARROT_INTERP, ARGIN(PMC *call_obj), ARGIN(PMC *pmc))
 {
     ASSERT_ARGS(Parrot_pcc_add_invocant)
     PMC *arg_flags;
-    GETATTR_CallContext_arg_flags(interp, call_obj, arg_flags);
-
-    VTABLE_unshift_integer(interp, arg_flags,
-          PARROT_ARG_PMC | PARROT_ARG_INVOCANT);
-          VTABLE_unshift_pmc(interp, call_obj, pmc);
+    arg_flags = ((Parrot_CallContext_attributes *)(call_obj)->data)->arg_flags;
+    (arg_flags)->vtable->unshift_integer(interp, arg_flags, PARROT_ARG_PMC | PARROT_ARG_INVOCANT);
+    (call_obj)->vtable->unshift_pmc(interp, call_obj, pmc);
 }
 
 /*
@@ -194,6 +192,7 @@ Parrot_pcc_invoke_method_from_c_args(PARROT_INTERP, ARGIN(PMC* pmc),
     ASSERT_ARGS(Parrot_pcc_invoke_method_from_c_args)
     PMC        *call_obj;
     PMC        *sub_obj;
+    PMC        *arg_flags;
     va_list     args;
     const char *arg_sig, *ret_sig;
     PMC        * const old_call_obj =
@@ -203,7 +202,10 @@ Parrot_pcc_invoke_method_from_c_args(PARROT_INTERP, ARGIN(PMC* pmc),
 
     va_start(args, signature);
     call_obj = Parrot_pcc_build_call_from_varargs(interp, PMCNULL, arg_sig, &args);
-    Parrot_pcc_add_invocant(interp, call_obj, pmc);
+
+    arg_flags = ((Parrot_CallContext_attributes *)(call_obj)->data)->arg_flags;
+    (arg_flags)->vtable->unshift_integer(interp, arg_flags, PARROT_ARG_PMC | PARROT_ARG_INVOCANT);
+    (call_obj)->vtable->unshift_pmc(interp, call_obj, pmc);
 
     Parrot_pcc_set_signature(interp, CURRENT_CONTEXT(interp), call_obj);
 
