@@ -1743,6 +1743,18 @@ sub generate_accessor {
 
 /* Generated macro accessors for '$attrname' attribute of $pmcname PMC. */
 #define GETATTR_${pmcname}_${attrname}(interp, pmc, dest) \\
+EOA
+    if (${pmcname} eq "CallContext") {
+        $decl .= <<"EOA";
+    (dest) = PARROT_CALLCONTEXT(pmc)->${attrname};
+
+#define SETATTR_${pmcname}_${attrname}(interp, pmc, value) \\
+    PARROT_CALLCONTEXT(pmc)->${attrname} = (value);
+EOA
+    }
+
+    else {
+        $decl .= <<"EOA";
     do { \\
         if (!PObj_is_object_TEST(pmc)) { \\
             (dest) = ((Parrot_${pmcname}_attributes *)PMC_data(pmc))->$attrname; \\
@@ -1750,112 +1762,114 @@ sub generate_accessor {
         else { \\
 EOA
 
-    if ($isfuncptr == 1) {
-        $decl .= <<"EOA";
+        if ($isfuncptr == 1) {
+            $decl .= <<"EOA";
             Parrot_ex_throw_from_c_args(interp, NULL, EXCEPTION_INVALID_OPERATION, \\
                 "Attributes of type '$origtype' cannot be " \\
                 "subclassed from a high-level PMC."); \\
 EOA
-    }
-    elsif ($attrtype eq "INTVAL") {
-        $decl .= <<"EOA";
+        }
+        elsif ($attrtype eq "INTVAL") {
+            $decl .= <<"EOA";
             PMC * const attr_value = VTABLE_get_attr_str(interp, \\
                               pmc, Parrot_str_new_constant(interp, "$attrname")); \\
             (dest) = (PMC_IS_NULL(attr_value) ? (INTVAL) 0: VTABLE_get_integer(interp, attr_value)); \\
 EOA
-    }
-    elsif ($attrtype eq "FLOATVAL") {
-        $decl .= <<"EOA";
+        }
+        elsif ($attrtype eq "FLOATVAL") {
+            $decl .= <<"EOA";
             PMC * const attr_value = VTABLE_get_attr_str(interp, \\
                               pmc, Parrot_str_new_constant(interp, "$attrname")); \\
             (dest) =  (PMC_IS_NULL(attr_value) ? (FLOATVAL) 0.0: VTABLE_get_number(interp, attr_value)); \\
 EOA
-    }
-    elsif ($attrtype =~ $isptrtostring) {
-        $decl .= <<"EOA";
+        }
+        elsif ($attrtype =~ $isptrtostring) {
+            $decl .= <<"EOA";
             PMC * const attr_value = VTABLE_get_attr_str(interp, \\
                               pmc, Parrot_str_new_constant(interp, "$attrname")); \\
             (dest) =  (PMC_IS_NULL(attr_value) ? (STRING *)NULL : VTABLE_get_string(interp, attr_value)); \\
 EOA
-    }
-    elsif ($attrtype =~ $isptrtopmc) {
-        $decl .= <<"EOA";
+        }
+        elsif ($attrtype =~ $isptrtopmc) {
+            $decl .= <<"EOA";
             (dest) = VTABLE_get_attr_str(interp, \\
                               pmc, Parrot_str_new_constant(interp, "$attrname")); \\
 EOA
-    }
+        }
 
-    else {
-        $inherit = 0;
-        $decl .= <<"EOA";
+        else {
+            $inherit = 0;
+            $decl .= <<"EOA";
             Parrot_ex_throw_from_c_args(interp, NULL, EXCEPTION_INVALID_OPERATION, \\
                 "Attributes of type '$attrtype' cannot be " \\
                 "subclassed from a high-level PMC."); \\
 EOA
-    }
+        }
 
-    $decl .= <<"EOA";
+        $decl .= <<"EOA";
         } \\
     } while (0)
+EOA
 
+        $decl .= <<"EOA";
 #define SETATTR_${pmcname}_${attrname}(interp, pmc, value) \\
     do { \\
         if (PObj_is_object_TEST(pmc)) { \\
 EOA
 
-    if ($isfuncptr == 1) {
-        $decl .= <<"EOA";
+        if ($isfuncptr == 1) {
+            $decl .= <<"EOA";
             Parrot_ex_throw_from_c_args(interp, NULL, EXCEPTION_INVALID_OPERATION, \\
                 "Attributes of type '$origtype' cannot be " \\
                 "subclassed from a high-level PMC."); \\
 EOA
-    }
-    elsif ($attrtype eq "INTVAL") {
-        $decl .= <<"EOA";
+        }
+        elsif ($attrtype eq "INTVAL") {
+            $decl .= <<"EOA";
             PMC * const attr_value = Parrot_pmc_new_init_int(interp, enum_class_Integer, value); \\
             VTABLE_set_attr_str(interp, pmc, \\
                               Parrot_str_new_constant(interp, "$attrname"), attr_value); \\
 EOA
-    }
-    elsif ($attrtype eq "FLOATVAL") {
-        $decl .= <<"EOA";
+        }
+        elsif ($attrtype eq "FLOATVAL") {
+            $decl .= <<"EOA";
             PMC * const attr_value = Parrot_pmc_new(interp, enum_class_Float); \\
             VTABLE_set_number_native(interp, attr_value, value); \\
             VTABLE_set_attr_str(interp, pmc, \\
                               Parrot_str_new_constant(interp, "$attrname"), attr_value); \\
 EOA
-    }
-    elsif ($attrtype =~ $isptrtostring) {
-        $decl .= <<"EOA";
+        }
+        elsif ($attrtype =~ $isptrtostring) {
+            $decl .= <<"EOA";
             PMC * const attr_value = Parrot_pmc_new(interp, enum_class_String); \\
             VTABLE_set_string_native(interp, attr_value, value); \\
             VTABLE_set_attr_str(interp, pmc, \\
                               Parrot_str_new_constant(interp, "$attrname"), attr_value); \\
 EOA
-    }
-    elsif ($attrtype =~ $isptrtopmc) {
-        $decl .= <<"EOA";
+        }
+        elsif ($attrtype =~ $isptrtopmc) {
+            $decl .= <<"EOA";
             VTABLE_set_attr_str(interp, pmc, \\
                               Parrot_str_new_constant(interp, "$attrname"), value); \\
 EOA
-    }
+        }
 
-    else {
-        $decl .= <<"EOA";
+        else {
+            $decl .= <<"EOA";
             Parrot_ex_throw_from_c_args(interp, NULL, EXCEPTION_INVALID_OPERATION, \\
                 "Attributes of type '$attrtype' cannot be " \\
                 "subclassed from a high-level PMC."); \\
 EOA
-    }
+        }
 
-    $decl .= <<"EOA";
+        $decl .= <<"EOA";
         } \\
         else \\
             ((Parrot_${pmcname}_attributes *)PMC_data(pmc))->$attrname = (value); \\
     } while (0)
 
 EOA
-
+    }
     #my $assertion = ($attrtype =~ $isptrtopmc and not $isfuncptr)
     #    ? 'PARROT_ASSERT_INTERP((PMC *)(value), interp);'
     #    : '';
