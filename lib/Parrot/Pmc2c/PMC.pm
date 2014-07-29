@@ -1,4 +1,4 @@
-# Copyright (C) 2004-2013, Parrot Foundation.
+# Copyright (C) 2004-2014, Parrot Foundation.
 
 =head1 NAME
 
@@ -521,7 +521,7 @@ sub generate_c_file {
 
     $c->emit( $self->preamble );
 
-    $c->emit( $self->hdecls );
+    $c->emit( $self->hdecls ) unless $self->name eq 'CallContext';
     $c->emit( $self->{ro}->hdecls ) if ( $self->{ro} );
     $self->gen_methods;
 
@@ -588,6 +588,10 @@ EOH
     $h->emit("${export}Hash*   Parrot_${name}_get_isa(PARROT_INTERP, ARGMOD_NULLOK(Hash* isa));\n");
 
     $self->gen_attributes;
+
+    if ($name eq 'CallContext') {
+        $h->emit( $self->hdecls );
+    }
 
     if ($self->is_dynamic) {
         $h->emit(<<"EOH");
@@ -1744,7 +1748,8 @@ sub generate_accessor {
 /* Generated macro accessors for '$attrname' attribute of $pmcname PMC. */
 #define GETATTR_${pmcname}_${attrname}(interp, pmc, dest) \\
 EOA
-    if (${pmcname} eq "CallContext") {
+    # Nobody derives from CallContext, the arg is always proper, and we need the speed
+    if ($pmcname eq "CallContext") {
         $decl .= <<"EOA";
     (dest) = PARROT_CALLCONTEXT(pmc)->${attrname};
 
