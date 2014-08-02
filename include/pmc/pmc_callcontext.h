@@ -3,11 +3,14 @@
  *
  * This file is generated automatically from './src/pmc/callcontext.pmc'
  * by tools/build/pmc2c.pl.
- * and then hand-edited
+ *
+ * Any changes made here will be lost!
+ *
  */
 
 /* HEADERIZER HFILE: none */
 /* HEADERIZER STOP */
+
 
 #ifndef PARROT_PMC_CALLCONTEXT_H_GUARD
 #define PARROT_PMC_CALLCONTEXT_H_GUARD
@@ -56,233 +59,264 @@ typedef struct Parrot_CallContext_attributes {
 /* Macro to access underlying structure of a CallContext PMC. */
 #define PARROT_CALLCONTEXT(o) ((Parrot_CallContext_attributes *) PMC_data(o))
 
+
+/* Generated macro accessors for 'caller_ctx' attribute of CallContext PMC. */
 #define GETATTR_CallContext_caller_ctx(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->caller_ctx
 
 #define SETATTR_CallContext_caller_ctx(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->caller_ctx = (value)
 
+/* Generated macro accessors for 'registers' attribute of CallContext PMC. */
 #define GETATTR_CallContext_registers(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->registers
 
 #define SETATTR_CallContext_registers(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->registers = (value)
 
+/* Generated macro accessors for 'bp' attribute of CallContext PMC. */
 #define GETATTR_CallContext_bp(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->bp
 
 #define SETATTR_CallContext_bp(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->bp = (value)
 
+/* Generated macro accessors for 'bp_ps' attribute of CallContext PMC. */
 #define GETATTR_CallContext_bp_ps(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->bp_ps
 
 #define SETATTR_CallContext_bp_ps(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->bp_ps = (value)
 
+/* Generated macro accessors for 'n_regs_used' attribute of CallContext PMC. */
 #define GETATTR_CallContext_n_regs_used(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->n_regs_used
 
 #define SETATTR_CallContext_n_regs_used(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->n_regs_used = (value)
 
+/* Generated macro accessors for 'lex_pad' attribute of CallContext PMC. */
 #define GETATTR_CallContext_lex_pad(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->lex_pad
 
 #define SETATTR_CallContext_lex_pad(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->lex_pad = (value)
 
+/* Generated macro accessors for 'outer_ctx' attribute of CallContext PMC. */
 #define GETATTR_CallContext_outer_ctx(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->outer_ctx
 
 #define SETATTR_CallContext_outer_ctx(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->outer_ctx = (value)
 
+/* Generated macro accessors for 'current_sub' attribute of CallContext PMC. */
 #define GETATTR_CallContext_current_sub(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->current_sub
 
 #define SETATTR_CallContext_current_sub(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->current_sub = (value)
 
+/* Generated macro accessors for 'handlers' attribute of CallContext PMC. */
 #define GETATTR_CallContext_handlers(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->handlers
 
 #define SETATTR_CallContext_handlers(interp, pmc, value) \
-      PARROT_CALLCONTEXT(pmc)->handlers = (value)
+    PARROT_CALLCONTEXT(pmc)->handlers = (value)
 
+/* Generated macro accessors for 'current_cont' attribute of CallContext PMC. */
 #define GETATTR_CallContext_current_cont(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->current_cont
+    (dest) = PARROT_CALLCONTEXT(pmc)->current_cont
 
 #define SETATTR_CallContext_current_cont(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->current_cont = (value)
 
+/* Generated macro accessors for 'current_namespace' attribute of CallContext PMC. */
 #define GETATTR_CallContext_current_namespace(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->current_namespace
+    (dest) = PARROT_CALLCONTEXT(pmc)->current_namespace
 
 #define SETATTR_CallContext_current_namespace(interp, pmc, value) \
-      PARROT_CALLCONTEXT(pmc)->current_namespace = (value)
+    PARROT_CALLCONTEXT(pmc)->current_namespace = (value)
 
+/* Generated macro accessors for 'current_pc' attribute of CallContext PMC. */
 #define GETATTR_CallContext_current_pc(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->current_pc
+    (dest) = PARROT_CALLCONTEXT(pmc)->current_pc
 
 #define SETATTR_CallContext_current_pc(interp, pmc, value) \
-      PARROT_CALLCONTEXT(pmc)->current_pc = (value)
+    PARROT_CALLCONTEXT(pmc)->current_pc = (value)
 
+/* Generated macro accessors for 'current_sig' attribute of CallContext PMC. */
 #define GETATTR_CallContext_current_sig(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->current_sig
+    (dest) = PARROT_CALLCONTEXT(pmc)->current_sig
 
 #define SETATTR_CallContext_current_sig(interp, pmc, value) \
-      PARROT_CALLCONTEXT(pmc)->current_sig = (value)
+    PARROT_CALLCONTEXT(pmc)->current_sig = (value)
 
+/* Generated macro accessors for 'num_constants' attribute of CallContext PMC. */
 #define GETATTR_CallContext_num_constants(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->num_constants
+    (dest) = PARROT_CALLCONTEXT(pmc)->num_constants
 
 #define SETATTR_CallContext_num_constants(interp, pmc, value) \
-      PARROT_CALLCONTEXT(pmc)->num_constants = (value)
+    PARROT_CALLCONTEXT(pmc)->num_constants = (value)
 
+/* Generated macro accessors for 'str_constants' attribute of CallContext PMC. */
 #define GETATTR_CallContext_str_constants(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->str_constants
+    (dest) = PARROT_CALLCONTEXT(pmc)->str_constants
 
 #define SETATTR_CallContext_str_constants(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->str_constants = (value)
+    PARROT_CALLCONTEXT(pmc)->str_constants = (value)
 
+/* Generated macro accessors for 'pmc_constants' attribute of CallContext PMC. */
 #define GETATTR_CallContext_pmc_constants(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->pmc_constants
+    (dest) = PARROT_CALLCONTEXT(pmc)->pmc_constants
 
 #define SETATTR_CallContext_pmc_constants(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->pmc_constants = (value)
 
+/* Generated macro accessors for 'current_HLL' attribute of CallContext PMC. */
 #define GETATTR_CallContext_current_HLL(interp, pmc, dest) \
     (dest) = PARROT_CALLCONTEXT(pmc)->current_HLL
 
 #define SETATTR_CallContext_current_HLL(interp, pmc, value) \
     PARROT_CALLCONTEXT(pmc)->current_HLL = (value)
 
+/* Generated macro accessors for 'warns' attribute of CallContext PMC. */
 #define GETATTR_CallContext_warns(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->warns
+    (dest) = PARROT_CALLCONTEXT(pmc)->warns
 
 #define SETATTR_CallContext_warns(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->warns = (value)
+    PARROT_CALLCONTEXT(pmc)->warns = (value)
 
+/* Generated macro accessors for 'errors' attribute of CallContext PMC. */
 #define GETATTR_CallContext_errors(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->errors
+    (dest) = PARROT_CALLCONTEXT(pmc)->errors
 
 #define SETATTR_CallContext_errors(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->errors = (value)
+    PARROT_CALLCONTEXT(pmc)->errors = (value)
 
+/* Generated macro accessors for 'trace_flags' attribute of CallContext PMC. */
 #define GETATTR_CallContext_trace_flags(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->trace_flags
+    (dest) = PARROT_CALLCONTEXT(pmc)->trace_flags
 
 #define SETATTR_CallContext_trace_flags(interp, pmc, value) \
-      PARROT_CALLCONTEXT(pmc)->trace_flags = (value)
+    PARROT_CALLCONTEXT(pmc)->trace_flags = (value)
 
+/* Generated macro accessors for 'recursion_depth' attribute of CallContext PMC. */
 #define GETATTR_CallContext_recursion_depth(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->recursion_depth
+    (dest) = PARROT_CALLCONTEXT(pmc)->recursion_depth
 
 #define SETATTR_CallContext_recursion_depth(interp, pmc, value) \
-      PARROT_CALLCONTEXT(pmc)->recursion_depth = (value)
+    PARROT_CALLCONTEXT(pmc)->recursion_depth = (value)
 
+/* Generated macro accessors for 'positionals' attribute of CallContext PMC. */
 #define GETATTR_CallContext_positionals(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->positionals
+    (dest) = PARROT_CALLCONTEXT(pmc)->positionals
 
 #define SETATTR_CallContext_positionals(interp, pmc, value) \
-      PARROT_CALLCONTEXT(pmc)->positionals = (value)
+    PARROT_CALLCONTEXT(pmc)->positionals = (value)
 
+/* Generated macro accessors for 'num_positionals' attribute of CallContext PMC. */
 #define GETATTR_CallContext_num_positionals(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->num_positionals
+    (dest) = PARROT_CALLCONTEXT(pmc)->num_positionals
 
 #define SETATTR_CallContext_num_positionals(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->num_positionals = (value)
+    PARROT_CALLCONTEXT(pmc)->num_positionals = (value)
 
+/* Generated macro accessors for 'allocated_positionals' attribute of CallContext PMC. */
 #define GETATTR_CallContext_allocated_positionals(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->allocated_positionals
+    (dest) = PARROT_CALLCONTEXT(pmc)->allocated_positionals
 
 #define SETATTR_CallContext_allocated_positionals(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->allocated_positionals = (value)
+    PARROT_CALLCONTEXT(pmc)->allocated_positionals = (value)
 
+/* Generated macro accessors for 'type_tuple' attribute of CallContext PMC. */
 #define GETATTR_CallContext_type_tuple(interp, pmc, dest) \
-      (dest) = PARROT_CALLCONTEXT(pmc)->type_tuple
+    (dest) = PARROT_CALLCONTEXT(pmc)->type_tuple
 
 #define SETATTR_CallContext_type_tuple(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->type_tuple = (value)
+    PARROT_CALLCONTEXT(pmc)->type_tuple = (value)
 
+/* Generated macro accessors for 'short_sig' attribute of CallContext PMC. */
 #define GETATTR_CallContext_short_sig(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->short_sig
+    (dest) = PARROT_CALLCONTEXT(pmc)->short_sig
 
 #define SETATTR_CallContext_short_sig(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->short_sig = (value)
+    PARROT_CALLCONTEXT(pmc)->short_sig = (value)
 
+/* Generated macro accessors for 'arg_flags' attribute of CallContext PMC. */
 #define GETATTR_CallContext_arg_flags(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->arg_flags
+    (dest) = PARROT_CALLCONTEXT(pmc)->arg_flags
 
 #define SETATTR_CallContext_arg_flags(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->arg_flags = (value)
+    PARROT_CALLCONTEXT(pmc)->arg_flags = (value)
 
+/* Generated macro accessors for 'return_flags' attribute of CallContext PMC. */
 #define GETATTR_CallContext_return_flags(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->return_flags
+    (dest) = PARROT_CALLCONTEXT(pmc)->return_flags
 
 #define SETATTR_CallContext_return_flags(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->return_flags = (value)
+    PARROT_CALLCONTEXT(pmc)->return_flags = (value)
 
+/* Generated macro accessors for 'hash' attribute of CallContext PMC. */
 #define GETATTR_CallContext_hash(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->hash
+    (dest) = PARROT_CALLCONTEXT(pmc)->hash
 
 #define SETATTR_CallContext_hash(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->hash = (value)
+    PARROT_CALLCONTEXT(pmc)->hash = (value)
 
+/* Generated macro accessors for 'continuation' attribute of CallContext PMC. */
 #define GETATTR_CallContext_continuation(interp, pmc, dest) \
-        (dest) = PARROT_CALLCONTEXT(pmc)->continuation
+    (dest) = PARROT_CALLCONTEXT(pmc)->continuation
 
 #define SETATTR_CallContext_continuation(interp, pmc, value) \
-        PARROT_CALLCONTEXT(pmc)->continuation = (value)
-
-/*static*/  PMC  * Parrot_CallContext_clone(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  void  Parrot_CallContext_destroy(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  INTVAL  Parrot_CallContext_elements(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  INTVAL  Parrot_CallContext_exists_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  INTVAL  Parrot_CallContext_exists_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  INTVAL  Parrot_CallContext_exists_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  PMC  * Parrot_CallContext_get_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  INTVAL  Parrot_CallContext_get_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  INTVAL  Parrot_CallContext_get_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  INTVAL  Parrot_CallContext_get_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  FLOATVAL  Parrot_CallContext_get_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  FLOATVAL  Parrot_CallContext_get_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  FLOATVAL  Parrot_CallContext_get_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  PMC  * Parrot_CallContext_get_pmc(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  PMC *  Parrot_CallContext_get_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  PMC *  Parrot_CallContext_get_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  PMC *  Parrot_CallContext_get_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  STRING  * Parrot_CallContext_get_string(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  STRING *  Parrot_CallContext_get_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  STRING *  Parrot_CallContext_get_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  STRING *  Parrot_CallContext_get_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  void  Parrot_CallContext_init(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  void  Parrot_CallContext_mark(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  void  Parrot_CallContext_morph(PARROT_INTERP, ARGMOD(PMC *_self), SHIM(PMC *type));
-/*static*/  void  Parrot_CallContext_push_float(PARROT_INTERP, ARGMOD(PMC *_self), FLOATVAL value);
-/*static*/  void  Parrot_CallContext_push_integer(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL value);
-/*static*/  void  Parrot_CallContext_push_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value);
-/*static*/  void  Parrot_CallContext_push_string(PARROT_INTERP, ARGMOD(PMC *_self), STRING *value);
-/*static*/  void  Parrot_CallContext_set_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, PMC *value);
-/*static*/  void  Parrot_CallContext_set_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, INTVAL value);
-/*static*/  void  Parrot_CallContext_set_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, INTVAL value);
-/*static*/  void  Parrot_CallContext_set_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, INTVAL value);
-/*static*/  void  Parrot_CallContext_set_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, FLOATVAL value);
-/*static*/  void  Parrot_CallContext_set_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, FLOATVAL value);
-/*static*/  void  Parrot_CallContext_set_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, FLOATVAL value);
-/*static*/  void  Parrot_CallContext_set_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value);
-/*static*/  void  Parrot_CallContext_set_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, PMC *value);
-/*static*/  void  Parrot_CallContext_set_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, PMC *value);
-/*static*/  void  Parrot_CallContext_set_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, PMC *value);
-/*static*/  void  Parrot_CallContext_set_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, STRING *value);
-/*static*/  void  Parrot_CallContext_set_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, STRING *value);
-/*static*/  void  Parrot_CallContext_set_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, STRING *value);
-/*static*/  void  Parrot_CallContext_set_string_native(PARROT_INTERP, ARGMOD(PMC *_self), STRING *value);
-/*static*/  PMC *  Parrot_CallContext_shift_pmc(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  STRING *  Parrot_CallContext_shift_string(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  void  Parrot_CallContext_unshift_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value);
-/*static*/  void Parrot_CallContext_nci_backtrace(PARROT_INTERP, ARGMOD(PMC *_self));
+    PARROT_CALLCONTEXT(pmc)->continuation = (value)
+  PMC  * Parrot_CallContext_clone(PARROT_INTERP, ARGMOD(PMC *_self));
+  void  Parrot_CallContext_destroy(PARROT_INTERP, ARGMOD(PMC *_self));
+  INTVAL  Parrot_CallContext_elements(PARROT_INTERP, ARGMOD(PMC *_self));
+  INTVAL  Parrot_CallContext_exists_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
+  INTVAL  Parrot_CallContext_exists_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
+  INTVAL  Parrot_CallContext_exists_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
+  PMC  * Parrot_CallContext_get_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
+  INTVAL  Parrot_CallContext_get_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
+  INTVAL  Parrot_CallContext_get_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
+  INTVAL  Parrot_CallContext_get_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
+  FLOATVAL  Parrot_CallContext_get_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
+  FLOATVAL  Parrot_CallContext_get_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
+  FLOATVAL  Parrot_CallContext_get_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
+  PMC  * Parrot_CallContext_get_pmc(PARROT_INTERP, ARGMOD(PMC *_self));
+  PMC *  Parrot_CallContext_get_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
+  PMC *  Parrot_CallContext_get_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
+  PMC *  Parrot_CallContext_get_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
+  STRING  * Parrot_CallContext_get_string(PARROT_INTERP, ARGMOD(PMC *_self));
+  STRING *  Parrot_CallContext_get_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
+  STRING *  Parrot_CallContext_get_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
+  STRING *  Parrot_CallContext_get_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
+  void  Parrot_CallContext_init(PARROT_INTERP, ARGMOD(PMC *_self));
+  void  Parrot_CallContext_mark(PARROT_INTERP, ARGMOD(PMC *_self));
+  void  Parrot_CallContext_morph(PARROT_INTERP, ARGMOD(PMC *_self), SHIM(PMC *type));
+  void  Parrot_CallContext_push_float(PARROT_INTERP, ARGMOD(PMC *_self), FLOATVAL value);
+  void  Parrot_CallContext_push_integer(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL value);
+  void  Parrot_CallContext_push_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value);
+  void  Parrot_CallContext_push_string(PARROT_INTERP, ARGMOD(PMC *_self), STRING *value);
+  void  Parrot_CallContext_set_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, PMC *value);
+  void  Parrot_CallContext_set_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, INTVAL value);
+  void  Parrot_CallContext_set_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, INTVAL value);
+  void  Parrot_CallContext_set_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, INTVAL value);
+  void  Parrot_CallContext_set_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, FLOATVAL value);
+  void  Parrot_CallContext_set_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, FLOATVAL value);
+  void  Parrot_CallContext_set_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, FLOATVAL value);
+  void  Parrot_CallContext_set_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value);
+  void  Parrot_CallContext_set_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, PMC *value);
+  void  Parrot_CallContext_set_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, PMC *value);
+  void  Parrot_CallContext_set_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, PMC *value);
+  void  Parrot_CallContext_set_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, STRING *value);
+  void  Parrot_CallContext_set_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, STRING *value);
+  void  Parrot_CallContext_set_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, STRING *value);
+  void  Parrot_CallContext_set_string_native(PARROT_INTERP, ARGMOD(PMC *_self), STRING *value);
+  PMC *  Parrot_CallContext_shift_pmc(PARROT_INTERP, ARGMOD(PMC *_self));
+  STRING *  Parrot_CallContext_shift_string(PARROT_INTERP, ARGMOD(PMC *_self));
+  void  Parrot_CallContext_unshift_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value);
+  void Parrot_CallContext_nci_backtrace(PARROT_INTERP, ARGMOD(PMC *_self));
+void    Parrot_CallContext_class_init(PARROT_INTERP, int, int);
 
 #endif /* PARROT_PMC_CALLCONTEXT_H_GUARD */
 

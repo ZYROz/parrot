@@ -3,7 +3,6 @@
  *
  * This file is generated automatically from './src/pmc/callcontext.pmc'
  * by tools/build/pmc2c.pl.
- * and then hand-edited
  *
  * Any changes made here will be lost!
  *
@@ -550,61 +549,9 @@ get_named_names(PARROT_INTERP, ARGIN(PMC *SELF))
 
 #include "parrot/packfile.h"
 #include "pmc/pmc_sub.h"
-#if 0
 #line 552 "./src/pmc/callcontext.c"
-/*static*/  PMC  * Parrot_CallContext_clone(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  void  Parrot_CallContext_destroy(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  INTVAL  Parrot_CallContext_elements(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  INTVAL  Parrot_CallContext_exists_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  INTVAL  Parrot_CallContext_exists_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  INTVAL  Parrot_CallContext_exists_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  PMC  * Parrot_CallContext_get_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  INTVAL  Parrot_CallContext_get_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  INTVAL  Parrot_CallContext_get_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  INTVAL  Parrot_CallContext_get_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  FLOATVAL  Parrot_CallContext_get_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  FLOATVAL  Parrot_CallContext_get_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  FLOATVAL  Parrot_CallContext_get_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  PMC  * Parrot_CallContext_get_pmc(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  PMC *  Parrot_CallContext_get_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  PMC *  Parrot_CallContext_get_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  PMC *  Parrot_CallContext_get_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  STRING  * Parrot_CallContext_get_string(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  STRING *  Parrot_CallContext_get_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key);
-/*static*/  STRING *  Parrot_CallContext_get_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key);
-/*static*/  STRING *  Parrot_CallContext_get_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key);
-/*static*/  void  Parrot_CallContext_init(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  void  Parrot_CallContext_mark(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  void  Parrot_CallContext_morph(PARROT_INTERP, ARGMOD(PMC *_self), SHIM(PMC *type));
-/*static*/  void  Parrot_CallContext_push_float(PARROT_INTERP, ARGMOD(PMC *_self), FLOATVAL value);
-/*static*/  void  Parrot_CallContext_push_integer(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL value);
-/*static*/  void  Parrot_CallContext_push_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value);
-/*static*/  void  Parrot_CallContext_push_string(PARROT_INTERP, ARGMOD(PMC *_self), STRING *value);
-/*static*/  void  Parrot_CallContext_set_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, PMC *value);
-/*static*/  void  Parrot_CallContext_set_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, INTVAL value);
-/*static*/  void  Parrot_CallContext_set_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, INTVAL value);
-/*static*/  void  Parrot_CallContext_set_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, INTVAL value);
-/*static*/  void  Parrot_CallContext_set_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, FLOATVAL value);
-/*static*/  void  Parrot_CallContext_set_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, FLOATVAL value);
-/*static*/  void  Parrot_CallContext_set_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, FLOATVAL value);
-/*static*/  void  Parrot_CallContext_set_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value);
-/*static*/  void  Parrot_CallContext_set_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, PMC *value);
-/*static*/  void  Parrot_CallContext_set_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, PMC *value);
-/*static*/  void  Parrot_CallContext_set_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, PMC *value);
-/*static*/  void  Parrot_CallContext_set_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, STRING *value);
-/*static*/  void  Parrot_CallContext_set_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, STRING *value);
-/*static*/  void  Parrot_CallContext_set_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, STRING *value);
-/*static*/  void  Parrot_CallContext_set_string_native(PARROT_INTERP, ARGMOD(PMC *_self), STRING *value);
-/*static*/  PMC *  Parrot_CallContext_shift_pmc(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  STRING *  Parrot_CallContext_shift_string(PARROT_INTERP, ARGMOD(PMC *_self));
-/*static*/  void  Parrot_CallContext_unshift_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value);
-/*static*/  void Parrot_CallContext_nci_backtrace(PARROT_INTERP, ARGMOD(PMC *_self));
-#endif
-
-void    Parrot_CallContext_class_init(PARROT_INTERP, int, int);
 void    Parrot_CallContext_ro_class_init(PARROT_INTERP, int, int);
-
-/*static*/  PMC  *
+  PMC  *
 Parrot_CallContext_clone(PARROT_INTERP, ARGMOD(PMC *_self))
 {
 #line 1564 "./src/pmc/callcontext.pmc"
@@ -654,9 +601,9 @@ Parrot_CallContext_clone(PARROT_INTERP, ARGMOD(PMC *_self))
     }
 
     return dest;
-#line 652 "./src/pmc/callcontext.c"
+#line 604 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_destroy(PARROT_INTERP, ARGMOD(PMC *_self))
 {
 #line 721 "./src/pmc/callcontext.pmc"
@@ -688,9 +635,9 @@ Parrot_CallContext_destroy(PARROT_INTERP, ARGMOD(PMC *_self))
     }
 
     Parrot_pcc_free_registers(interp, _self);
-#line 686 "./src/pmc/callcontext.c"
+#line 638 "./src/pmc/callcontext.c"
 }
-/*static*/  INTVAL 
+  INTVAL 
 Parrot_CallContext_elements(PARROT_INTERP, ARGMOD(PMC *_self))
 {
 #line 1032 "./src/pmc/callcontext.pmc"
@@ -703,9 +650,9 @@ Parrot_CallContext_elements(PARROT_INTERP, ARGMOD(PMC *_self))
     GETATTR_CallContext_num_positionals(interp, _self, num_positionals);
 
     return num_positionals;
-#line 701 "./src/pmc/callcontext.c"
+#line 653 "./src/pmc/callcontext.c"
 }
-/*static*/  INTVAL 
+  INTVAL 
 Parrot_CallContext_exists_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key)
 {
 #line 1520 "./src/pmc/callcontext.pmc"
@@ -719,9 +666,9 @@ Parrot_CallContext_exists_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key)
     }
 
     return 0;
-#line 717 "./src/pmc/callcontext.c"
+#line 669 "./src/pmc/callcontext.c"
 }
-/*static*/  INTVAL 
+  INTVAL 
 Parrot_CallContext_exists_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key)
 {
 #line 1544 "./src/pmc/callcontext.pmc"
@@ -734,9 +681,9 @@ Parrot_CallContext_exists_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL ke
         return key < num_positionals;
 
     return 0;
-#line 732 "./src/pmc/callcontext.c"
+#line 684 "./src/pmc/callcontext.c"
 }
-/*static*/  INTVAL 
+  INTVAL 
 Parrot_CallContext_exists_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key)
 {
 #line 1532 "./src/pmc/callcontext.pmc"
@@ -750,9 +697,9 @@ Parrot_CallContext_exists_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *k
     }
 
     return 0;
-#line 748 "./src/pmc/callcontext.c"
+#line 700 "./src/pmc/callcontext.c"
 }
-/*static*/  PMC  *
+  PMC  *
 Parrot_CallContext_get_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key)
 {
 #line 988 "./src/pmc/callcontext.pmc"
@@ -798,9 +745,9 @@ Parrot_CallContext_get_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key)
     if (value)
         return value;
     return PMCNULL;
-#line 796 "./src/pmc/callcontext.c"
+#line 748 "./src/pmc/callcontext.c"
 }
-/*static*/  INTVAL 
+  INTVAL 
 Parrot_CallContext_get_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key)
 {
 #line 1453 "./src/pmc/callcontext.pmc"
@@ -820,9 +767,9 @@ Parrot_CallContext_get_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key
     }
 
     return 0;
-#line 818 "./src/pmc/callcontext.c"
+#line 770 "./src/pmc/callcontext.c"
 }
-/*static*/  INTVAL 
+  INTVAL 
 Parrot_CallContext_get_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key)
 {
 #line 1170 "./src/pmc/callcontext.pmc"
@@ -842,9 +789,9 @@ Parrot_CallContext_get_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTV
 
         return autobox_intval(interp, cell);
     }
-#line 840 "./src/pmc/callcontext.c"
+#line 792 "./src/pmc/callcontext.c"
 }
-/*static*/  INTVAL 
+  INTVAL 
 Parrot_CallContext_get_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key)
 {
 #line 1383 "./src/pmc/callcontext.pmc"
@@ -865,9 +812,9 @@ Parrot_CallContext_get_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRI
     }
 
     return 0;
-#line 863 "./src/pmc/callcontext.c"
+#line 815 "./src/pmc/callcontext.c"
 }
-/*static*/  FLOATVAL 
+  FLOATVAL 
 Parrot_CallContext_get_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key)
 {
 #line 1471 "./src/pmc/callcontext.pmc"
@@ -884,9 +831,9 @@ Parrot_CallContext_get_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key)
     }
 
     return 0.0;
-#line 882 "./src/pmc/callcontext.c"
+#line 834 "./src/pmc/callcontext.c"
 }
-/*static*/  FLOATVAL 
+  FLOATVAL 
 Parrot_CallContext_get_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key)
 {
 #line 1188 "./src/pmc/callcontext.pmc"
@@ -900,9 +847,9 @@ Parrot_CallContext_get_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVA
 
     GETATTR_CallContext_positionals(interp, _self, cells);
     return autobox_floatval(interp, &cells[key]);
-#line 898 "./src/pmc/callcontext.c"
+#line 850 "./src/pmc/callcontext.c"
 }
-/*static*/  FLOATVAL 
+  FLOATVAL 
 Parrot_CallContext_get_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key)
 {
 #line 1402 "./src/pmc/callcontext.pmc"
@@ -919,9 +866,9 @@ Parrot_CallContext_get_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRIN
     }
 
     return 0.0;
-#line 917 "./src/pmc/callcontext.c"
+#line 869 "./src/pmc/callcontext.c"
 }
-/*static*/  PMC  *
+  PMC  *
 Parrot_CallContext_get_pmc(PARROT_INTERP, ARGMOD(PMC *_self))
 {
 #line 843 "./src/pmc/callcontext.pmc"
@@ -966,9 +913,9 @@ Parrot_CallContext_get_pmc(PARROT_INTERP, ARGMOD(PMC *_self))
     }
 
     return type_tuple;
-#line 964 "./src/pmc/callcontext.c"
+#line 916 "./src/pmc/callcontext.c"
 }
-/*static*/  PMC * 
+  PMC * 
 Parrot_CallContext_get_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key)
 {
 #line 1501 "./src/pmc/callcontext.pmc"
@@ -989,9 +936,9 @@ Parrot_CallContext_get_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key)
     }
 
     return PMCNULL;
-#line 987 "./src/pmc/callcontext.c"
+#line 939 "./src/pmc/callcontext.c"
 }
-/*static*/  PMC * 
+  PMC * 
 Parrot_CallContext_get_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key)
 {
 #line 1212 "./src/pmc/callcontext.pmc"
@@ -1008,9 +955,9 @@ Parrot_CallContext_get_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL k
     if (type == PMCCELL)
         return CELL_PMC(&cells[key]);
     return autobox_pmc(interp, &cells[key], type);
-#line 1006 "./src/pmc/callcontext.c"
+#line 958 "./src/pmc/callcontext.c"
 }
-/*static*/  PMC * 
+  PMC * 
 Parrot_CallContext_get_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key)
 {
 #line 1433 "./src/pmc/callcontext.pmc"
@@ -1032,9 +979,9 @@ Parrot_CallContext_get_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *
     }
 
     return PMCNULL;
-#line 1030 "./src/pmc/callcontext.c"
+#line 982 "./src/pmc/callcontext.c"
 }
-/*static*/  STRING  *
+  STRING  *
 Parrot_CallContext_get_string(PARROT_INTERP, ARGMOD(PMC *_self))
 {
 #line 775 "./src/pmc/callcontext.pmc"
@@ -1046,7 +993,7 @@ Parrot_CallContext_get_string(PARROT_INTERP, ARGMOD(PMC *_self))
     GETATTR_CallContext_short_sig(interp, _self, res);
 
     if (res) {
-        #line 1044 "./src/pmc/callcontext.c"
+        #line 996 "./src/pmc/callcontext.c"
     return (STRING*)res;
 #line 783 "./src/pmc/callcontext.pmc"
 
@@ -1081,13 +1028,13 @@ Parrot_CallContext_get_string(PARROT_INTERP, ARGMOD(PMC *_self))
 
     SETATTR_CallContext_short_sig(interp, _self, res);
 
-    #line 1079 "./src/pmc/callcontext.c"
+    #line 1031 "./src/pmc/callcontext.c"
     return (STRING*)res;
 #line 815 "./src/pmc/callcontext.pmc"
 
-#line 1083 "./src/pmc/callcontext.c"
+#line 1035 "./src/pmc/callcontext.c"
 }
-/*static*/  STRING * 
+  STRING * 
 Parrot_CallContext_get_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key)
 {
 #line 1486 "./src/pmc/callcontext.pmc"
@@ -1104,9 +1051,9 @@ Parrot_CallContext_get_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key)
     }
 
     return STRINGNULL;
-#line 1102 "./src/pmc/callcontext.c"
+#line 1054 "./src/pmc/callcontext.c"
 }
-/*static*/  STRING * 
+  STRING * 
 Parrot_CallContext_get_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key)
 {
 #line 1200 "./src/pmc/callcontext.pmc"
@@ -1120,9 +1067,9 @@ Parrot_CallContext_get_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVA
 
     GETATTR_CallContext_positionals(interp, _self, cells);
     return autobox_string(interp, &cells[key]);
-#line 1118 "./src/pmc/callcontext.c"
+#line 1070 "./src/pmc/callcontext.c"
 }
-/*static*/  STRING * 
+  STRING * 
 Parrot_CallContext_get_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key)
 {
 #line 1418 "./src/pmc/callcontext.pmc"
@@ -1139,9 +1086,9 @@ Parrot_CallContext_get_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRIN
     }
 
     return STRINGNULL;
-#line 1137 "./src/pmc/callcontext.c"
+#line 1089 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_init(PARROT_INTERP, ARGMOD(PMC *_self))
 {
 #line 587 "./src/pmc/callcontext.pmc"
@@ -1153,9 +1100,9 @@ Parrot_CallContext_init(PARROT_INTERP, ARGMOD(PMC *_self))
 
     PObj_custom_mark_destroy_SETALL(_self);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1151 "./src/pmc/callcontext.c"
+#line 1103 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_mark(PARROT_INTERP, ARGMOD(PMC *_self))
 {
 #line 605 "./src/pmc/callcontext.pmc"
@@ -1237,9 +1184,9 @@ Parrot_CallContext_mark(PARROT_INTERP, ARGMOD(PMC *_self))
                 Parrot_gc_mark_STRING_alive(interp, s);
         }
     }
-#line 1235 "./src/pmc/callcontext.c"
+#line 1187 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_morph(PARROT_INTERP, ARGMOD(PMC *_self), SHIM(PMC *type))
 {
 #line 696 "./src/pmc/callcontext.pmc"
@@ -1265,9 +1212,9 @@ Parrot_CallContext_morph(PARROT_INTERP, ARGMOD(PMC *_self), SHIM(PMC *type))
         SETATTR_CallContext_hash(interp, _self, NULL);
     }
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1263 "./src/pmc/callcontext.c"
+#line 1215 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_push_float(PARROT_INTERP, ARGMOD(PMC *_self), FLOATVAL value)
 {
 #line 1059 "./src/pmc/callcontext.pmc"
@@ -1283,9 +1230,9 @@ Parrot_CallContext_push_float(PARROT_INTERP, ARGMOD(PMC *_self), FLOATVAL value)
     cells[num_pos].type     = FLOATCELL;
     SETATTR_CallContext_num_positionals(interp, _self, num_pos + 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1281 "./src/pmc/callcontext.c"
+#line 1233 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_push_integer(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL value)
 {
 #line 1043 "./src/pmc/callcontext.pmc"
@@ -1304,9 +1251,9 @@ Parrot_CallContext_push_integer(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL value)
     cells[num_pos].type     = INTCELL;
     SETATTR_CallContext_num_positionals(interp, _self, num_pos + 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1302 "./src/pmc/callcontext.c"
+#line 1254 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_push_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value)
 {
 #line 1085 "./src/pmc/callcontext.pmc"
@@ -1328,9 +1275,9 @@ Parrot_CallContext_push_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value)
     cells[num_pos].type     = PMCCELL;
     SETATTR_CallContext_num_positionals(interp, _self, num_pos + 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1326 "./src/pmc/callcontext.c"
+#line 1278 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_push_string(PARROT_INTERP, ARGMOD(PMC *_self), STRING *value)
 {
 #line 1072 "./src/pmc/callcontext.pmc"
@@ -1346,9 +1293,9 @@ Parrot_CallContext_push_string(PARROT_INTERP, ARGMOD(PMC *_self), STRING *value)
     cells[num_pos].type     = STRINGCELL;
     SETATTR_CallContext_num_positionals(interp, _self, num_pos + 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1344 "./src/pmc/callcontext.c"
+#line 1296 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, PMC *value)
 {
 #line 915 "./src/pmc/callcontext.pmc"
@@ -1364,9 +1311,9 @@ Parrot_CallContext_set_attr_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, 
         Parrot_ex_throw_from_c_args(interp, NULL,
             EXCEPTION_ATTRIB_NOT_FOUND, "No such attribute '%S'", key);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1362 "./src/pmc/callcontext.c"
+#line 1314 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, INTVAL value)
 {
 #line 1327 "./src/pmc/callcontext.pmc"
@@ -1383,9 +1330,9 @@ Parrot_CallContext_set_integer_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key
     cell->u.i       = value;
     cell->type      = INTCELL;
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1381 "./src/pmc/callcontext.c"
+#line 1333 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, INTVAL value)
 {
 #line 1227 "./src/pmc/callcontext.pmc"
@@ -1400,9 +1347,9 @@ Parrot_CallContext_set_integer_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTV
     if (pos <= key)
         SETATTR_CallContext_num_positionals(interp, _self, key + 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1398 "./src/pmc/callcontext.c"
+#line 1350 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, INTVAL value)
 {
 #line 1275 "./src/pmc/callcontext.pmc"
@@ -1418,9 +1365,9 @@ Parrot_CallContext_set_integer_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRI
     cell->u.i       = value;
     cell->type      = INTCELL;
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1416 "./src/pmc/callcontext.c"
+#line 1368 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, FLOATVAL value)
 {
 #line 1341 "./src/pmc/callcontext.pmc"
@@ -1437,9 +1384,9 @@ Parrot_CallContext_set_number_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key,
     cell->u.n       = value;
     cell->type      = FLOATCELL;
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1435 "./src/pmc/callcontext.c"
+#line 1387 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, FLOATVAL value)
 {
 #line 1239 "./src/pmc/callcontext.pmc"
@@ -1454,9 +1401,9 @@ Parrot_CallContext_set_number_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVA
     if (pos <= key)
         SETATTR_CallContext_num_positionals(interp, _self, key + 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1452 "./src/pmc/callcontext.c"
+#line 1404 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, FLOATVAL value)
 {
 #line 1288 "./src/pmc/callcontext.pmc"
@@ -1472,18 +1419,18 @@ Parrot_CallContext_set_number_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRIN
     cell->u.n       = value;
     cell->type      = FLOATCELL;
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1470 "./src/pmc/callcontext.c"
+#line 1422 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value)
 {
 #line 828 "./src/pmc/callcontext.pmc"
 
     SETATTR_CallContext_type_tuple(interp, _self, value);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1479 "./src/pmc/callcontext.c"
+#line 1431 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, PMC *value)
 {
 #line 1369 "./src/pmc/callcontext.pmc"
@@ -1500,9 +1447,9 @@ Parrot_CallContext_set_pmc_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, PM
     cell->u.p       = value;
     cell->type      = PMCCELL;
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1498 "./src/pmc/callcontext.c"
+#line 1450 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, PMC *value)
 {
 #line 1263 "./src/pmc/callcontext.pmc"
@@ -1517,9 +1464,9 @@ Parrot_CallContext_set_pmc_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL k
     if (pos <= key)
         SETATTR_CallContext_num_positionals(interp, _self, key + 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1515 "./src/pmc/callcontext.c"
+#line 1467 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, PMC *value)
 {
 #line 1314 "./src/pmc/callcontext.pmc"
@@ -1535,9 +1482,9 @@ Parrot_CallContext_set_pmc_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *
     cell->u.p       = value;
     cell->type      = PMCCELL;
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1533 "./src/pmc/callcontext.c"
+#line 1485 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key, STRING *value)
 {
 #line 1355 "./src/pmc/callcontext.pmc"
@@ -1554,9 +1501,9 @@ Parrot_CallContext_set_string_keyed(PARROT_INTERP, ARGMOD(PMC *_self), PMC *key,
     cell->u.s       = value;
     cell->type      = STRINGCELL;
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1552 "./src/pmc/callcontext.c"
+#line 1504 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVAL key, STRING *value)
 {
 #line 1251 "./src/pmc/callcontext.pmc"
@@ -1571,9 +1518,9 @@ Parrot_CallContext_set_string_keyed_int(PARROT_INTERP, ARGMOD(PMC *_self), INTVA
     if (pos <= key)
         SETATTR_CallContext_num_positionals(interp, _self, key + 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1569 "./src/pmc/callcontext.c"
+#line 1521 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRING *key, STRING *value)
 {
 #line 1301 "./src/pmc/callcontext.pmc"
@@ -1589,18 +1536,18 @@ Parrot_CallContext_set_string_keyed_str(PARROT_INTERP, ARGMOD(PMC *_self), STRIN
     cell->u.s       = value;
     cell->type      = STRINGCELL;
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1587 "./src/pmc/callcontext.c"
+#line 1539 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_set_string_native(PARROT_INTERP, ARGMOD(PMC *_self), STRING *value)
 {
 #line 761 "./src/pmc/callcontext.pmc"
 
     SETATTR_CallContext_short_sig(interp, _self, value);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1596 "./src/pmc/callcontext.c"
+#line 1548 "./src/pmc/callcontext.c"
 }
-/*static*/  PMC * 
+  PMC * 
 Parrot_CallContext_shift_pmc(PARROT_INTERP, ARGMOD(PMC *_self))
 {
 #line 1125 "./src/pmc/callcontext.pmc"
@@ -1626,9 +1573,9 @@ Parrot_CallContext_shift_pmc(PARROT_INTERP, ARGMOD(PMC *_self))
     SETATTR_CallContext_num_positionals(interp, _self, size - 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
     return retval;
-#line 1624 "./src/pmc/callcontext.c"
+#line 1576 "./src/pmc/callcontext.c"
 }
-/*static*/  STRING * 
+  STRING * 
 Parrot_CallContext_shift_string(PARROT_INTERP, ARGMOD(PMC *_self))
 {
 #line 1148 "./src/pmc/callcontext.pmc"
@@ -1653,9 +1600,9 @@ Parrot_CallContext_shift_string(PARROT_INTERP, ARGMOD(PMC *_self))
     SETATTR_CallContext_num_positionals(interp, _self, size - 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
     return retval;
-#line 1651 "./src/pmc/callcontext.c"
+#line 1603 "./src/pmc/callcontext.c"
 }
-/*static*/  void 
+  void 
 Parrot_CallContext_unshift_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value)
 {
 #line 1109 "./src/pmc/callcontext.pmc"
@@ -1674,9 +1621,9 @@ Parrot_CallContext_unshift_pmc(PARROT_INTERP, ARGMOD(PMC *_self), PMC *value)
     cells[0].type   = PMCCELL;
     SETATTR_CallContext_num_positionals(interp, _self, size + 1);
     PARROT_GC_WRITE_BARRIER(interp, _self);
-#line 1672 "./src/pmc/callcontext.c"
+#line 1624 "./src/pmc/callcontext.c"
 }
-/*static*/  void
+  void
 Parrot_CallContext_nci_backtrace(PARROT_INTERP, ARGMOD(PMC *_self))
 {
     PMC * const _ctx         = CURRENT_CONTEXT(interp);
@@ -1756,7 +1703,7 @@ Parrot_CallContext_nci_backtrace(PARROT_INTERP, ARGMOD(PMC *_self))
         cur_ctx = Parrot_pcc_get_caller_ctx(interp, cur_ctx);
     }
 
-    #line 1754 "./src/pmc/callcontext.c"
+    #line 1706 "./src/pmc/callcontext.c"
      {
         VTABLE_set_pmc_keyed_int(interp, _call_object, 0, (PMC*)result);
         
@@ -1764,7 +1711,7 @@ Parrot_CallContext_nci_backtrace(PARROT_INTERP, ARGMOD(PMC *_self))
      }
 #line 1672 "./src/pmc/callcontext.pmc"
 
-#line 1762 "./src/pmc/callcontext.c"
+#line 1714 "./src/pmc/callcontext.c"
 
     } /* END PMETHOD BODY */
 

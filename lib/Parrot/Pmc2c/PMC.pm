@@ -1751,10 +1751,10 @@ EOA
     # Nobody derives from CallContext, the arg is always proper, and we need the speed
     if ($pmcname eq "CallContext") {
         $decl .= <<"EOA";
-    (dest) = PARROT_CALLCONTEXT(pmc)->${attrname};
+    (dest) = PARROT_CALLCONTEXT(pmc)->${attrname}
 
 #define SETATTR_${pmcname}_${attrname}(interp, pmc, value) \\
-    PARROT_CALLCONTEXT(pmc)->${attrname} = (value);
+    PARROT_CALLCONTEXT(pmc)->${attrname} = (value)
 EOA
     }
 
