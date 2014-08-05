@@ -783,7 +783,7 @@ Parrot_pcc_build_sig_object_from_varargs(PARROT_INTERP, ARGIN_NULLOK(PMC *obj),
 
     /* Add invocant to the front of the arguments iff needed */
     if (!PMC_IS_NULL(obj) && append_pi)
-        VTABLE_unshift_pmc(interp, call_object, obj);
+        Parrot_CallContext_unshift_pmc(interp, call_object, obj);
 
     return call_object;
 }
