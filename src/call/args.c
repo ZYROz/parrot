@@ -364,12 +364,12 @@ Parrot_pcc_build_sig_object_from_op(PARROT_INTERP, ARGIN_NULLOK(PMC *signature),
 
         switch (PARROT_ARG_TYPE_MASK_MASK(arg_flags)) {
           case PARROT_ARG_INTVAL:
-            VTABLE_push_integer(interp, call_object, constant
+            Parrot_CallContext_push_integer(interp, call_object, constant
                     ? raw_index
                     : CTX_REG_INT(interp, ctx, raw_index));
             break;
           case PARROT_ARG_FLOATVAL:
-            VTABLE_push_float(interp, call_object, constant
+            Parrot_CallContext_push_float(interp, call_object, constant
                     ? Parrot_pcc_get_num_constant(interp, ctx, raw_index)
                     : CTX_REG_NUM(interp, ctx, raw_index));
             break;
@@ -392,7 +392,7 @@ Parrot_pcc_build_sig_object_from_op(PARROT_INTERP, ARGIN_NULLOK(PMC *signature),
                             raw_sig, raw_args, arg_index);
                 }
                 else
-                    VTABLE_push_string(interp, call_object, string_value);
+                    Parrot_CallContext_push_string(interp, call_object, string_value);
 
                 break;
             }
@@ -406,7 +406,7 @@ Parrot_pcc_build_sig_object_from_op(PARROT_INTERP, ARGIN_NULLOK(PMC *signature),
                     dissect_aggregate_arg(interp, call_object, pmc_value);
                 }
                 else {
-                    VTABLE_push_pmc(interp, call_object, pmc_value);
+                    Parrot_CallContext_push_pmc(interp, call_object, pmc_value);
                 }
 
                 break;
@@ -487,10 +487,10 @@ dissect_aggregate_arg(PARROT_INTERP, ARGMOD(PMC *call_object), ARGIN(PMC *aggreg
 {
     ASSERT_ARGS(dissect_aggregate_arg)
     if (VTABLE_does(interp, aggregate, CONST_STRING(interp, "array"))) {
-        const INTVAL elements = Parrot_CallContext_elements(interp, aggregate);
+        const INTVAL elements = VTABLE_elements(interp, aggregate);
         INTVAL index;
         for (index = 0; index < elements; ++index) {
-            VTABLE_push_pmc(interp, call_object,
+            Parrot_CallContext_push_pmc(interp, call_object,
                     VTABLE_get_pmc_keyed_int(interp, aggregate, index));
         }
     }
@@ -607,22 +607,22 @@ set_call_from_varargs(PARROT_INTERP,
                             EXCEPTION_INVALID_OPERATION,
                             "Dispatch: only the first argument can be an invocant");
                     else {
-                        VTABLE_push_pmc(interp, signature, pmc_arg);
+                        Parrot_CallContext_push_pmc(interp, signature, pmc_arg);
                         ++i; /* skip 'i' */
                     }
                 }
                 else
-                    VTABLE_push_pmc(interp, signature, pmc_arg);
+                    Parrot_CallContext_push_pmc(interp, signature, pmc_arg);
                 break;
             }
           case 'S':
-            VTABLE_push_string(interp, signature, va_arg(*args, STRING *));
+            Parrot_CallContext_push_string(interp, signature, va_arg(*args, STRING *));
             break;
           case 'I':
-            VTABLE_push_integer(interp, signature, va_arg(*args, INTVAL));
+            Parrot_CallContext_push_integer(interp, signature, va_arg(*args, INTVAL));
             break;
           case 'N':
-            VTABLE_push_float(interp, signature, va_arg(*args, FLOATVAL));
+            Parrot_CallContext_push_float(interp, signature, va_arg(*args, FLOATVAL));
             break;
           case '-':
             return;
@@ -741,13 +741,13 @@ Parrot_pcc_build_sig_object_from_varargs(PARROT_INTERP, ARGIN_NULLOK(PMC *obj),
         /* Regular arguments just set the value */
         switch (type) {
           case 'I':
-            VTABLE_push_integer(interp, call_object, va_arg(args, INTVAL));
+            Parrot_CallContext_push_integer(interp, call_object, va_arg(args, INTVAL));
             break;
           case 'N':
-            VTABLE_push_float(interp, call_object, va_arg(args, FLOATVAL));
+            Parrot_CallContext_push_float(interp, call_object, va_arg(args, FLOATVAL));
             break;
           case 'S':
-            VTABLE_push_string(interp, call_object, va_arg(args, STRING *));
+            Parrot_CallContext_push_string(interp, call_object, va_arg(args, STRING *));
             break;
           case 'P':
             {
@@ -758,7 +758,7 @@ Parrot_pcc_build_sig_object_from_varargs(PARROT_INTERP, ARGIN_NULLOK(PMC *obj),
                      ++i; /* skip 'f' */
                 }
                 else {
-                    VTABLE_push_pmc(interp, call_object, pmc_arg);
+                    Parrot_CallContext_push_pmc(interp, call_object, pmc_arg);
                     if (type_lookahead == 'i') {
                         if (i != 0)
                             Parrot_ex_throw_from_c_args(interp, NULL,
